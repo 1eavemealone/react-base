@@ -1,0 +1,67 @@
+import React from 'react';
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Text,
+  StatusBar
+} from 'react-native';
+
+class LoginForm extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <StatusBar  backgroundColor="#3498db" barStyle="light-content"/>
+        <TextInput
+          autoCorrect={false}
+          placeholder="Username"
+          underlineColorAndroid='transparent'
+          placeholderTextColor="rgba(255,255,255,0.7)"
+          returnKeyType="next"
+          onSubmitEditing={() => this.passwordInput.focus()}
+          autoCorrect={false}
+          autoCapitalize="none"
+          style={styles.input}/>
+
+        <TextInput
+          autoCorrect={false}
+          placeholder="Password"
+          underlineColorAndroid='transparent'
+          secureTextEntry
+          placeholderTextColor="rgba(255,255,255,0.7)"
+          returnKeyType="go"
+          ref={(input) => this.passwordInput = input}
+          style={styles.input}/>
+
+        <TouchableOpacity style={styles.buttonContainer}>
+          <Text style={styles.buttonText}>LOGIN</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20
+  },
+  input: {
+    height: 40,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    color: '#FFF',
+    paddingHorizontal: 10,
+    marginBottom: 10
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#FFF',
+    fontWeight: '700'
+  },
+  buttonContainer: {
+    backgroundColor: '#2980b9',
+    paddingVertical: 12
+  }
+});
+
+export default LoginForm;
