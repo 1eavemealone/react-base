@@ -1,5 +1,7 @@
 import React from 'react';
 import Login from './components/Login/login';
+import Register from './components/Register/register';
+import Dashboard from './components/Dashboard/dashboard';
 
 
 import {
@@ -7,24 +9,32 @@ import {
   View,
   Text,
   StyleSheet,
+  Navigator
 } from 'react-native';
 
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.wrapper}>
-        <Login/>
-      </View>
+      <Navigator initialRoute={{
+          id: 'Login'
+        }}
+        renderScene={
+          this.navigatorRenderScene
+        }
+      />
     )
   }
-}
-
-const styles = StyleSheet.create({
-  wrapper: {
-    backgroundColor: '#3498db',
-    flex: 1,
-    justifyContent: 'center',
+  navigatorRenderScene(route, navigator) {
+      _navigator = navigator;
+      switch (route.id) {
+        case 'Login':
+          return(<Login navigator={navigator}/>);
+        case 'Register':
+          return(<Register navigator={navigator}/>);
+        case 'Dashboard':
+          return(<Dashboard navigator={navigator}/>);
+      }
   }
-});
+}
 
 export default App;
